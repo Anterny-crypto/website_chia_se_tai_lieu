@@ -1,80 +1,230 @@
-body{
-    margin:0;
-    padding:0;
-    font-family:Arial, sans-serif;
-    background:#f0f4f8;
+/* ==========================================
+   MÀU CHỦ ĐẠO PASTEL NHẸ NHÀNG
+   ========================================== */
+:root {
+    --bg-main: #f4f7f6;          /* Nền xám xanh pastel dịu mắt */
+    --card-bg: #ffffff;          /* Nền trắng của khung nội dung */
+    --primary-color: #6c9bc0;     /* Xanh dương thạch anh nhẹ nhàng */
+    --primary-hover: #5784a8;    /* Màu khi di chuột vào nút */
+    --text-main: #334e68;        /* Chữ xanh đen đậm cho đỡ gắt */
+    --text-muted: #627d98;       /* Chữ chú thích màu xám */
+    --border-color: #e2e8f0;     /* Viền nhẹ thanh lịch */
 }
 
-.container{
-    width:90%;
-    margin:auto;
-    margin-top:30px;
+body {
+    background-color: var(--bg-main) !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-main);
 }
 
-.center-box{
-    width:350px;
-    background:white;
-    padding:30px;
-    border-radius:10px;
-    box-shadow:0 0 10px gray;
-
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
+/* Cấu hình chung cho Form Đăng nhập, Đăng ký, Thêm tài liệu */
+.center-box {
+    width: 350px;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 16px; 
+    box-shadow: 0 10px 25px rgba(51, 78, 104, 0.05);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-h1,h2{
-    text-align:center;
+h1, h2 {
+    text-align: center;
+    color: #243e56;
+    font-weight: 700;
 }
 
-input{
-    width:100%;
-    padding:10px;
-    margin-top:10px;
-    margin-bottom:10px;
-    box-sizing:border-box;
+/* Các ô nhập liệu */
+input[type="text"], 
+input[type="password"], 
+input[type="search"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #bcccdc;
+    border-radius: 8px;
+    background-color: #fafbfc;
+    transition: all 0.3s ease;
 }
 
-button{
-    padding:10px 20px;
-    background:#007bff;
-    color:white;
-    border:none;
-    cursor:pointer;
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(108, 155, 192, 0.2);
+    background-color: #fff;
 }
 
-button:hover{
-    background:#0056b3;
+/* Các nút bấm gửi form */
+button, input[type="submit"] {
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
 }
 
-a{
-    text-decoration:none;
+button:hover, input[type="submit"]:hover {
+    background: var(--primary-hover);
 }
 
-.menu{
-    margin-bottom:20px;
+a {
+    text-decoration: none;
+    color: var(--primary-color);
 }
 
-.menu a{
-    background:#007bff;
-    color:white;
-    padding:10px 15px;
-    border-radius:5px;
-    margin-right:10px;
+a:hover {
+    text-decoration: underline;
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    background:white;
+/* ==========================================
+   CẤU HÌNH GIAO DIỆN TRANG CHỦ (INDEX)
+   ========================================== */
+.top-nav-bar {
+    text-align: right;
+    padding: 20px 80px 10px 80px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+.top-nav-bar span {
+    margin-left: 25px;
+    cursor: pointer;
+}
+.top-nav-bar .active {
+    font-weight: 700;
+    color: #243e56;
 }
 
-table,th,td{
-    border:1px solid gray;
+.container {
+    max-width: 1000px;
+    margin: 10px auto 60px auto;
+    padding: 40px;
+    background-color: var(--card-bg);
+    border-radius: 16px; 
+    box-shadow: 0 10px 30px rgba(51, 78, 104, 0.05);
+    position: relative;
 }
 
-th,td{
-    padding:10px;
-    text-align:center;
-    }
+.brand-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+.brand-left h2 {
+    font-size: 32px;
+    margin: 0;
+}
+.brand-left p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 5px 0 0 0;
+    font-weight: 500;
+}
+.brand-right {
+    font-size: 36px;
+    letter-spacing: 12px;
+    opacity: 0.7;
+}
+
+.menu {
+    margin-bottom: 25px;
+    display: flex;
+    gap: 12px;
+}
+.menu a {
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    color: #ffffff !important;
+    display: inline-flex;
+    align-items: center;
+}
+.menu a[href="/add"]::before { content: "📁 "; margin-right: 6px; }
+.menu a[href="/search"]::before { content: "🔍 "; margin-right: 6px; }
+.menu a[href="/logout"]::before { content: "🔒 "; margin-right: 6px; }
+
+/* Màu sắc nhẹ nhàng cho 3 nút chức năng chính */
+.menu a[href="/add"] { background-color: #7b9acc; }    /* Xanh biển nhạt */
+.menu a[href="/search"] { background-color: #69a7a3; } /* Xanh mint nhạt */
+.menu a[href="/logout"] { background-color: #a0aec0; } /* Xám ấm nhã nhặn */
+.menu a:hover { opacity: 0.85; transform: translateY(-1px); }
+
+/* Bảng hiển thị tài liệu */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    table-layout: fixed; 
+}
+th {
+    background-color: #eef2f5 !important; /* Màu nền xám trắng tinh tế thay cho màu xanh đen gắt cũ */
+    color: var(--text-main) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    padding: 14px 10px;
+}
+td {
+    padding: 14px 10px;
+    font-size: 14px;
+    color: #486581;
+    border-bottom: 1px solid #edf2f7;
+    border-right: 1px solid #edf2f7;
+    vertical-align: middle;
+    background-color: #ffffff;
+    white-space: nowrap;    
+    overflow: hidden;        
+    text-overflow: ellipsis; 
+}
+td:last-child { border-right: none; }
+tr:hover td { background-color: #f8fafc; }
+
+/* Màu chữ hành động */
+td a[href^="/edit/"] { color: #5a8fd6; }   /* Sửa thành màu xanh dịu */
+td a[href^="/delete/"] { color: #e27c7c; } /* Xóa thành màu đỏ hồng pastel */
+
+.btn-download {
+    color: #6c9bc0 !important;
+    font-weight: 600;
+}
+.btn-download:hover {
+    color: #5784a8 !important;
+    text-decoration: underline;
+}
+
+/* Ô thông báo/Mẹo nhỏ */
+.custom-alert-box {
+    margin-top: 25px;
+    padding: 15px 20px;
+    background-color: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #92400e;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
