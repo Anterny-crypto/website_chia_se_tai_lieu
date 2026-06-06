@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Tìm kiếm</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>Tìm kiếm tài liệu</h2>
+
+<form method="POST">
+
+<input
+type="text"
+name="keyword"
+placeholder="Nhập tên hoặc thể loại">
+
+<button type="submit">
+Tìm kiếm
+</button>
+
+</form>
+
+<br>
+
+<table>
+
+<tr>   
+<th>Tên tài liệu</th>
+<th>Thể loại</th>
+</tr>
+
+{% for doc in results %}
+
+<tr>
+<td>{{ doc.title }}</td>
+<td>{{ doc.category }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>
