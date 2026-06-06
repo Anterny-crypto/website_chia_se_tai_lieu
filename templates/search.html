@@ -34,6 +34,7 @@ Tìm kiếm
 <tr>   
 <th>Tên tài liệu</th>
 <th>Thể loại</th>
+<th>Hành động</th>
 </tr>
 
 {% for doc in results %}
@@ -41,6 +42,16 @@ Tìm kiếm
 <tr>
 <td>{{ doc.title }}</td>
 <td>{{ doc.category }}</td>
+<td>
+    {% if doc.file_path %}
+        <!-- Gọi đến hàm download_file trong app.py của bạn -->
+        <a href="{{ url_for('download_file', filename=doc.file_path) }}" class="btn-download">
+            Tải về
+        </a>
+    {% else %}
+        <span style="color: #999; font-size: 14px;">Không có file</span>
+    {% endif %}
+</td>
 </tr>
 
 {% endfor %}
