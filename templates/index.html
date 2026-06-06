@@ -5,235 +5,12 @@
 <title>Trang chủ</title>
 
 <link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}?v=2.4">
-
-<style>
-    
-    body {
-        background-color: #f1f5f9 !important;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .top-nav-bar {
-        text-align: right;
-        padding: 20px 80px 10px 80px;
-        font-size: 15px;
-        font-weight: 500;
-        color: #334155;
-    }
-    .top-nav-bar span {
-        margin-left: 25px;
-        cursor: pointer;
-    }
-    .top-nav-bar .active {
-        font-weight: 700;
-        color: #000000;
-    }
-
-    
-    .container {
-        max-width: 1000px;
-        margin: 10px auto 60px auto;
-        padding: 40px;
-        background-color: #ffffff;
-        border-radius: 16px; 
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-        position: relative;
-    }
-
-    
-    .brand-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-    }
-    .brand-left h2 {
-        font-size: 32px;
-        font-weight: 700;
-        color: #1e293b;
-        margin: 0;
-    }
-    .brand-left p {
-        font-size: 14px;
-        color: #64748b;
-        margin: 5px 0 0 0;
-        font-weight: 500;
-    }
-    .brand-right {
-        font-size: 36px;
-        letter-spacing: 12px;
-        opacity: 0.85;
-    }
-    
-    h1 {
-        text-align: center;
-        color: #1e293b;
-        font-size: 26px;
-        font-weight: 700;
-        margin-top: 20px;
-        margin-bottom: 30px;
-    }
-
-    
-    .menu {
-        margin-bottom: 25px;
-        display: flex;
-        gap: 12px;
-    }
-
-    .menu a {
-        text-decoration: none;
-        padding: 10px 18px;
-        font-size: 13px;
-        font-weight: 500;
-        border-radius: 6px;
-        transition: all 0.2s ease;
-        color: #ffffff !important;
-        display: inline-flex;
-        align-items: center;
-    }
-
-    .menu a[href="/add"]::before { content: "📁 "; margin-right: 6px; }
-    .menu a[href="/search"]::before { content: "🔍 "; margin-right: 6px; }
-    .menu a[href="/logout"]::before { content: "🔒 "; margin-right: 6px; }
-
-    .menu a[href="/add"] { background-color: #2563eb; }
-    .menu a[href="/search"] { background-color: #1d4ed8; }
-    .menu a[href="/logout"] { background-color: #94a3b8; }
-    .menu a:hover { opacity: 0.9; }
-
-    
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 15px;
-        border-radius: 8px;
-        overflow: hidden;
-        border: 1px solid #cbd5e1;
-        table-layout: fixed; 
-    }
-
-    
-    th:nth-child(1) { width: 8%; }
-    th:nth-child(2) { width: 42%; } 
-    th:nth-child(3) { width: 15%; } 
-    th:nth-child(4) { width: 11%; } 
-    th:nth-child(5) { width: 11%; }
-    th:nth-child(6) { width: 13%; } 
-
-    th {
-        background-color: #2e4468 !important; 
-        color: #ffffff !important;
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 12px;
-        letter-spacing: 0.5px;
-        text-align: center;
-        padding: 14px 10px;
-        border: none;
-    }
-
-    td {
-        padding: 14px 10px;
-        font-size: 14px;
-        color: #334155;
-        border-bottom: 1px solid #e2e8f0;
-        border-right: 1px solid #e2e8f0;
-        vertical-align: middle;
-        background-color: #ffffff;
-        white-space: nowrap;     
-        overflow: hidden;        
-        text-overflow: ellipsis; 
-    }
-    
-    
-    td:nth-child(1) { text-align: center; } 
-    td:nth-child(2) { text-align: left; padding-left: 15px; } 
-    td:nth-child(3), td:nth-child(4), td:nth-child(5), td:nth-child(6) { text-align: center; } 
-
-    td:last-child {
-        border-right: none;
-    }
-
-    tr:hover td {
-        background-color: #f8fafc;
-    }
-
-    td a {
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 13px;
-    }
-    td a[href^="/edit/"] { color: #3b82f6; }
-    td a[href^="/delete/"] { color: #ef4444; }
-
-    
-    .btn-primary {
-        background-color: #10b981 !important; 
-        color: #ffffff !important;
-        padding: 7px 12px;
-        font-size: 12px;
-        border-radius: 5px;
-        display: inline-flex;
-        align-items: center;
-        font-weight: 500;
-        border: none;
-        cursor: pointer;
-        text-decoration: none;
-    }
-    .btn-primary::before {
-        content: "📥 ";
-        margin-right: 4px;
-    }
-    .btn-primary:hover {
-        background-color: #059669;
-    }
-
-    
-    .custom-alert-box {
-        margin-top: 25px;
-        padding: 15px 20px;
-        background-color: #fefce8; 
-        border: 1px solid #fef08a;
-        border-radius: 8px;
-        font-size: 13px;
-        color: #713f12;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        box-shadow: inset 0 1px 2px rgba(0,0,0,0.01);
-    }
-</style>
+href="{{ url_for('static', filename='style.css') }}?v=2.5">
 
 </head>
 <body>
 
-
-<div class="top-nav-bar">
-    <span>Home</span>
-    <span>Features</span>
-    <span>Pricing</span>
-    <span class="active">Tra cứu</span>
-</div>
-
 <div class="container">
-
-    
-    <div class="brand-header">
-        <div class="brand-left">
-            <h2>DocumentHub</h2>
-            <p>Giải pháp quản lý tài liệu thông minh</p>
-        </div>
-        <div class="brand-right">🖥️☁️🖥️</div>
-    </div>
 
     <h1>Tra cứu tài liệu</h1>
 
@@ -281,7 +58,6 @@ href="{{ url_for('static', filename='style.css') }}?v=2.4">
     </td>
     <td>
     {% if doc.file_path %}
-        <!-- Đã thêm thuộc tính download và chữ "Tải về" kèm icon -->
         <a href="{{ url_for('download_file', filename=doc.file_path) }}" class="btn-download" download>
              Tải về
         </a>
@@ -290,17 +66,11 @@ href="{{ url_for('static', filename='style.css') }}?v=2.4">
     {% endif %}
     </td>
 
-
     </tr>
 
     {% endfor %}
 
     </table>
-
-   
-    <div class="custom-alert-box">
-        💡 <strong>Mẹo:</strong> 
-    </div>
 
 </div>
 
