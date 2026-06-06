@@ -241,6 +241,17 @@ def logout():
     session.pop("user", None)
 
     return redirect("/")
+@app.route("/download/<filename>")
+def download_file(filename):
+    if "user" not in session:
+        return redirect("/")
+
+    return send_from_directory(
+        app.config["UPLOAD_FOLDER"], 
+        filename, 
+        as_attachment=True
+    )
+
 
 if __name__ == "__main__":
     app.run(debug=True)

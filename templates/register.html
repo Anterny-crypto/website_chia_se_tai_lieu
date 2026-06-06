@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng ký</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="center-box">
+
+    <h2>Đăng ký</h2>
+
+    <form method="POST">
+
+        <input
+        type="text"
+        name="username"
+        placeholder="Tên đăng nhập"
+        required>
+
+        <input
+        type="password"
+        name="password"
+        placeholder="Mật khẩu"
+        required>
+
+        <button type="submit">
+            Đăng ký
+        </button>
+
+    </form>
+
+    <p>
+        Đã có tài khoản?
+        <a href="/">
+            Đăng nhập
+        </a>
+    </p>
+
+</div>
+
+</body>
+</html>
