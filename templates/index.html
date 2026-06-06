@@ -281,12 +281,15 @@ href="{{ url_for('static', filename='style.css') }}?v=2.4">
     </td>
     <td>
     {% if doc.file_path %}
-    <a href="{{ url_for('download_file', filename=doc.file_path) }}" class="btn-download">
-    </a>
-{% else %}
-    <span>Không có file</span>
-{% endif %}
+        <!-- Đã thêm thuộc tính download và chữ "Tải về" kèm icon -->
+        <a href="{{ url_for('download_file', filename=doc.file_path) }}" class="btn-download" download>
+             Tải về
+        </a>
+    {% else %}
+        <span style="color: #999;">Không có file</span>
+    {% endif %}
     </td>
+
 
     </tr>
 
