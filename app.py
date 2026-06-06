@@ -119,3 +119,136 @@ def index():
         "index.html",
         documents=documents
     )
+
+@app.route("/add", methods=["GET", "POST"])
+def add():
+
+    if "user" not in session:
+        return redirect("/")
+
+    if request.method == "POST":
+
+        title = request.form["title"]
+        category = request.form["category"]
+
+        filename = ""
+
+        file = request.files["file"]
+
+        if file and file.filename != "":
+
+            filename = secure_filename(file.filename)
+
+            file.save(
+                os.path.join(
+                    app.config["UPLOAD_FOLDER"],
+                    filename
+                )
+            )
+
+        doc = Document(
+            title=title,
+            category=category,
+            file_path=filename
+        )
+
+        db.session.add(doc)
+        db.session.commit()
+
+        return redirect("/index")
+
+    return render_template("add.html")
+
+# ======================
+# SỬA
+# ======================
+@app.route("/edit/<int:id>", methods=["GET", "POST"])
+def edit(id):
+
+    if "user" not in session:
+        return redirect("/")
+
+    document = Document.query.get(id)
+
+    if request.method == "POST":
+
+        document.title = request.form["title"]
+        document.category = request.form["category"]
+
+        file = request.files["file"]
+
+        if file and file.filename != "":
+
+            filename = secure_filename(file.filename)
+
+            file.save(
+                os.path.join(
+                    app.config["UPLOAD_FOLDER"],
+                    filename
+                )
+            )
+
+            document.file_path = filename
+
+        db.session.commit()
+
+        return redirect("/index")
+
+    return render_template(
+        "edit.html",
+        document=document
+    )
+
+# ======================
+# XÓA
+# ======================
+@app.route("/delete/<int:id>")
+def delete(id):
+
+    if "user" not in session:
+        return redirect("/")
+
+    document = Document.query.get(id)
+
+    db.session.delete(document)
+    db.session.commit()
+
+    return redirect("/index")
+
+# ======================
+# TÌM KIẾM
+# ======================
+@app.route("/search", methods=["GET", "POST"])
+def search():
+
+    if "user" not in session:
+        return redirect("/")
+
+    results = []
+
+    if request.method == "POST":
+
+        keyword = request.form["keyword"]
+
+        results = Document.query.filter(
+            (Document.title.contains(keyword)) |
+            (Document.category.contains(keyword))
+        ).all()
+
+    return render_template(
+        "search.html",
+        results=results
+    )
+
+# ======================
+# LOGOUT
+# ======================
+@app.route("/logout")
+def logout():
+
+    session.pop("user", None)
+
+    return redirect("/")
+
+if __name__ == "__main__":
+    app.run(debug=True)
