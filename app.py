@@ -10,7 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///documents.db'
 
 app.secret_key = "abc123"
 
-
+#Chức năng upload#
 UPLOAD_FOLDER = "uploads"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
@@ -159,9 +159,7 @@ def add():
 
     return render_template("add.html")
 
-# ======================
-# SỬA
-# ======================
+
 @app.route("/edit/<int:id>", methods=["GET", "POST"])
 def edit(id):
 
@@ -199,9 +197,7 @@ def edit(id):
         document=document
     )
 
-# ======================
-# XÓA
-# ======================
+
 @app.route("/delete/<int:id>")
 def delete(id):
 
@@ -215,9 +211,7 @@ def delete(id):
 
     return redirect("/index")
 
-# ======================
-# TÌM KIẾM
-# ======================
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
 
@@ -240,9 +234,7 @@ def search():
         results=results
     )
 
-# ======================
-# LOGOUT
-# ======================
+
 @app.route("/logout")
 def logout():
 
