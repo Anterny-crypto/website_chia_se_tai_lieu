@@ -44,7 +44,6 @@ Tìm kiếm
 <td>{{ doc.category }}</td>
 <td>
     {% if doc.file_path %}
-        <!-- Gọi đến hàm download_file trong app.py của bạn -->
         <a href="{{ url_for('download_file', filename=doc.file_path) }}" class="btn-download">
             Tải về
         </a>

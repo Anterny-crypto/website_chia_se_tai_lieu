@@ -1,14 +1,11 @@
-/* ==========================================
-   MÀU CHỦ ĐẠO PASTEL NHẸ NHÀNG
-   ========================================== */
 :root {
-    --bg-main: #f4f7f6;          /* Nền xám xanh pastel dịu mắt */
-    --card-bg: #ffffff;          /* Nền trắng của khung nội dung */
-    --primary-color: #6c9bc0;     /* Xanh dương thạch anh nhẹ nhàng */
-    --primary-hover: #5784a8;    /* Màu khi di chuột vào nút */
-    --text-main: #334e68;        /* Chữ xanh đen đậm cho đỡ gắt */
-    --text-muted: #627d98;       /* Chữ chú thích màu xám */
-    --border-color: #e2e8f0;     /* Viền nhẹ thanh lịch */
+    --bg-main: #f4f7f6;         
+    --card-bg: #ffffff;       
+    --primary-color: #6c9bc0;     
+    --primary-hover: #5784a8;    
+    --text-main: #334e68;        
+    --text-muted: #627d98;       
+    --border-color: #e2e8f0;     
 }
 
 body {
@@ -22,7 +19,7 @@ body {
     color: var(--text-main);
 }
 
-/* Cấu hình chung cho Form Đăng nhập, Đăng ký, Thêm tài liệu */
+
 .center-box {
     width: 350px;
     background: var(--card-bg);
@@ -41,7 +38,7 @@ h1, h2 {
     font-weight: 700;
 }
 
-/* Các ô nhập liệu */
+
 input[type="text"], 
 input[type="password"], 
 input[type="search"],
@@ -64,7 +61,7 @@ input:focus, select:focus {
     background-color: #fff;
 }
 
-/* Các nút bấm gửi form */
+
 button, input[type="submit"] {
     padding: 10px 20px;
     background: var(--primary-color);
@@ -89,9 +86,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* ==========================================
-   CẤU HÌNH GIAO DIỆN TRANG CHỦ (INDEX)
-   ========================================== */
+
 .top-nav-bar {
     text-align: right;
     padding: 20px 80px 10px 80px;
@@ -160,10 +155,10 @@ a:hover {
 .menu a[href="/search"]::before { content: "🔍 "; margin-right: 6px; }
 .menu a[href="/logout"]::before { content: "🔒 "; margin-right: 6px; }
 
-/* Màu sắc nhẹ nhàng cho 3 nút chức năng chính */
-.menu a[href="/add"] { background-color: #7b9acc; }    /* Xanh biển nhạt */
-.menu a[href="/search"] { background-color: #69a7a3; } /* Xanh mint nhạt */
-.menu a[href="/logout"] { background-color: #a0aec0; } /* Xám ấm nhã nhặn */
+
+.menu a[href="/add"] { background-color: #7b9acc; }    
+.menu a[href="/search"] { background-color: #69a7a3; } 
+.menu a[href="/logout"] { background-color: #a0aec0; } 
 .menu a:hover { opacity: 0.85; transform: translateY(-1px); }
 
 /* Bảng hiển thị tài liệu */
@@ -177,7 +172,7 @@ table {
     table-layout: fixed; 
 }
 th {
-    background-color: #eef2f5 !important; /* Màu nền xám trắng tinh tế thay cho màu xanh đen gắt cũ */
+    background-color: #eef2f5 !important; 
     color: var(--text-main) !important;
     font-weight: 600;
     text-transform: uppercase;
@@ -197,14 +192,14 @@ td {
     white-space: nowrap;    
     overflow: hidden;        
     text-overflow: ellipsis; 
+    text-align: center; 
 }
 td:last-child { border-right: none; }
 tr:hover td { background-color: #f8fafc; }
 
-/* Màu chữ hành động */
-td a[href^="/edit/"] { color: #5a8fd6; }   /* Sửa thành màu xanh dịu */
-td a[href^="/delete/"] { color: #e27c7c; } /* Xóa thành màu đỏ hồng pastel */
 
+td a[href^="/edit/"] { color: #5a8fd6; }   
+td a[href^="/delete/"] { color: #e27c7c; } 
 .btn-download {
     color: #6c9bc0 !important;
     font-weight: 600;
@@ -214,7 +209,7 @@ td a[href^="/delete/"] { color: #e27c7c; } /* Xóa thành màu đỏ hồng past
     text-decoration: underline;
 }
 
-/* Ô thông báo/Mẹo nhỏ */
+
 .custom-alert-box {
     margin-top: 25px;
     padding: 15px 20px;

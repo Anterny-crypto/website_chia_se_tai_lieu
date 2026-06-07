@@ -10,7 +10,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///documents.db'
 
 app.secret_key = "abc123"
 
-#Chức năng upload#
 UPLOAD_FOLDER = "uploads"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
@@ -77,9 +76,7 @@ def login():
 
     return render_template("login.html")
 
-# ======================
-# REGISTER
-# ======================
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
 
